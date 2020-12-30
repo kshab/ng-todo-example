@@ -1,9 +1,9 @@
 export interface IToDo {
   name: string;
   description: string;
-  isCompleted: boolean;
-  isImportant: boolean;
-  expirationDate: Date;
+  isCompleted?: boolean;
+  isImportant?: boolean;
+  expirationDate?: Date;
   id: string;
 }
 

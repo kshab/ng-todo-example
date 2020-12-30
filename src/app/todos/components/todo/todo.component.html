@@ -1,9 +1,29 @@
-<div class="todo mb-1">
+<div class="todo mb-1 px-2">
+  <div class="todo_complete">{{ todo?.isCompleted ? 'done' : '' }}</div>
+
   <div class="row mx-4">
+<!--    <div class="col todo_checkbox">-->
+<!--      <input type="checkbox" [checked]="todo?.isCompleted">-->
+<!--    </div>-->
+
+<!--    <div class="col todo_important">{{ todo?.name }}</div>-->
+
     <div class="col todo_name">{{ todo?.name }}</div>
+
     <div class="col todo_description">{{ todo?.description }}</div>
-    <div class="col todo_checkbox">
-      <input type="checkbox" [checked]="todo?.isCompleted">
+
+    <div class="col todo__action-buttons row">
+      <div class="col">
+        <button class="todo__edit-button" (click)="onEdit(todo)">Edit</button>
+      </div>
+
+      <div class="col">
+        <button class="todo__delete-button" (click)="onDelete(todo)">Delete</button>
+      </div>
+
+      <div class="col">
+        <button class="todo__delete-button" (click)="onComplete(todo)">Complete</button>
+      </div>
     </div>
   </div>
 </div>
