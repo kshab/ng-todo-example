@@ -32,7 +32,10 @@ export class TodoEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const todo = this.todoForm.value;
+    let todo = this.todoForm.value;
+    let daysToExpire = this.todoForm.value.expirationDate;
+    todo.expirationDate = new Date();
+    todo.expirationDate.setDate(todo.expirationDate.getDate() + daysToExpire);
 
     if (this.isEditMode) {
       this.updateTodo(this._currentTodo?.id, todo);

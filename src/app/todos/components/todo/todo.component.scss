@@ -3,7 +3,27 @@
   border: 1px solid gray;
   border-radius: 4px;
 
-  &_complete {
+  &__complete, &__important, &__expires {
     position: absolute;
+  }
+
+  &__complete {
+    top: 0.5rem;
+  }
+
+  &__important {
+    bottom: 0.5rem;
+  }
+
+  &__expires {
+    right: 0;
+  }
+
+  &__action-buttons {
+    display: flex;
+  }
+
+  .button {
+    margin-right: 8px;
   }
 }

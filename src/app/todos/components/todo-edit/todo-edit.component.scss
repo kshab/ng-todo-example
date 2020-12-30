@@ -1,3 +1,36 @@
 .edit-todo {
-  width: 100%;
+  &__form {
+    position: relative;
+    margin: 0 auto;
+    min-width: 50%;
+    max-width: 75%;
+    border: 1px solid gray;
+    border-radius: 4px;
+
+    label {
+      position: relative;
+      left: -12px;
+    }
+  }
+
+  &__form-control {
+    //width: 80%;
+    //min-width: 60%;
+    input, textarea {
+      width: 100%;
+    }
+
+    .checkbox {
+      position: absolute;
+      top: 16%;
+      width: unset;
+    }
+  }
+
+  &__submit-button {
+    width: 100%;
+    //position: absolute;
+    //right: 0;
+    //bottom: 0;
+  }
 }

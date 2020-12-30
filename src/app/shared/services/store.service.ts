@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ToDo } from '../../todos/models/todo.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,25 @@ export class StoreService {
   private subscribeToTodos(): void {
     this.fireStore.collection('todo')
       .valueChanges({ idField: 'id' })
+      .pipe(
+        map(todos => todos.sort(this.sortTodos))
+      )
       .subscribe((todos: ToDo[]) => {
         this._todos$.next(todos);
       });
+  }
+
+  private sortTodos(a, b): number {
+    if (a.isCompleted && !b.isCompleted) {
+      return -1;
+    } else if (b.isCompleted && !a.isCompleted) {
+      return 1;
+    } else if (a.isImportant && !b.isImportant) {
+      return -1;
+    } else if (b.isImportant && !a.isImportant) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }
