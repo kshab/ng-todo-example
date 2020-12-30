@@ -1,1 +1,9 @@
-<p>todo works!</p>
+<div class="todo mb-1">
+  <div class="row mx-4">
+    <div class="col todo_name">{{ todo?.name }}</div>
+    <div class="col todo_description">{{ todo?.description }}</div>
+    <div class="col todo_checkbox">
+      <input type="checkbox" [checked]="todo?.isCompleted">
+    </div>
+  </div>
+</div>

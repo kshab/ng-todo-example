@@ -18,7 +18,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     NgbModule,
     TodosModule,
-    AngularFireModule.initializeApp(environment),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
   providers: [],
