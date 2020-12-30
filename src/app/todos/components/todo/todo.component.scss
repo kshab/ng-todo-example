@@ -1,4 +1,9 @@
 .todo {
+  position: relative;
   border: 1px solid gray;
   border-radius: 4px;
+
+  &_complete {
+    position: absolute;
+  }
 }

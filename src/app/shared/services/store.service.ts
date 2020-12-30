@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ToDo } from '../../todos/models/todo.model';
 
 @Injectable({
@@ -14,33 +14,26 @@ export class StoreService {
   }
 
   constructor(private fireStore: AngularFirestore) {
-    this.setFakeData();
-  }
-
-  public setFakeData(): void {
-    const fakeTodo1 = new ToDo(
-      'test 1',
-      'it is a test todo',
-      false,
-      false,
-      new Date(),
-      '1'
-    );
-
-    const fakeTodo2 = new ToDo(
-      'test 2',
-      'it is a second test todo',
-      false,
-      false,
-      new Date(),
-      '2'
-    );
-
-    this.addTodo(fakeTodo1);
-    this.addTodo(fakeTodo2);
+    this.subscribeToTodos();
   }
 
   public addTodo(todoItem: ToDo): void {
-    this._todos$.next([...this._todos$.value, todoItem]);
+    this.fireStore.collection('todo').add(todoItem);
+  }
+
+  public updateTodo(todoId: string, todoItem: ToDo): void {
+    this.fireStore.collection('todo').doc(todoId).update(todoItem);
+  }
+
+  public deleteTodo(todoItem: ToDo): void {
+    this.fireStore.collection('todo').doc(todoItem.id).delete();
+  }
+
+  private subscribeToTodos(): void {
+    this.fireStore.collection('todo')
+      .valueChanges({ idField: 'id' })
+      .subscribe((todos: ToDo[]) => {
+        this._todos$.next(todos);
+      });
   }
 }

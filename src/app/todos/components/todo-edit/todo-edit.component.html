@@ -1,8 +1,4 @@
 <div class="edit-todo px-1">
-  <h2>
-    Is edit: {{ isEditMode }}
-  </h2>
-
   <form class="edit-todo__form" [formGroup]="todoForm" (submit)="onSubmit()">
     <div class="edit-todo__form-control">
       <label for="name">Name</label>
@@ -19,8 +15,13 @@
       <input type="checkbox" id="importance" formControlName="isImportant">
     </div>
 
+    <div class="edit-todo__form-control">
+      <label for="expiration">Expiration date</label>
+      <input type="text" id="expiration" formControlName="expirationDate">
+    </div>
+
     <div class="edit-todo__submit-button">
-      <button type="submit" class="button" [disabled]="todoForm?.invalid">Add Todo</button>
+      <button type="submit" class="button" [disabled]="todoForm?.invalid">{{ isEditMode ? 'Update Todo' : 'Add Todo' }}</button>
     </div>
   </form>
 </div>

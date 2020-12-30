@@ -1,16 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToDo } from '../../models/todo.model';
+import { StoreService } from '../../../shared/services/store.service';
+import { TodoService } from '../../../shared/services/todo.service';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
   @Input() todo: ToDo;
 
-  constructor() { }
+  constructor(private storeService: StoreService,
+              private todoService: TodoService) {
+  }
 
-  ngOnInit(): void {
+  public onEdit(todoItem: ToDo): void {
+    this.todoService.setCurrentToDo(todoItem);
+    this.todoService.setEditMode(true);
+  }
+
+  public onComplete(todoItem: ToDo): void {
+    todoItem.isCompleted = true;
+    this.storeService.updateTodo(todoItem?.id, todoItem);
+  }
+
+  public onDelete(todoItem: ToDo): void {
+    this.storeService.deleteTodo(todoItem);
   }
 }
