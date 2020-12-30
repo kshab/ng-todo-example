@@ -31,9 +31,9 @@ export class TodoComponent {
 
   public getExpirationInDays(todo: ToDo): string {
     if (todo?.expirationDate) {
-      let currentDate = new Date(Date.now()).getMilliseconds();
-      let expirationDate = new Date(todo.expirationDate.seconds * 1000).getMilliseconds();
-      let diff = expirationDate - currentDate;
+      // let currentDate = new Date(Date.now()).getMilliseconds();
+      // let expirationDate = new Date(todo.expirationDate.seconds * 1000).getMilliseconds();
+      // let diff = expirationDate - currentDate;
 
       return '';
     } else {
