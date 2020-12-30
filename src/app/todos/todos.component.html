@@ -1,3 +1,5 @@
-Todos Component
+Form
 
-<app-todo></app-todo>
+<hr>
+
+<app-todo *ngFor="let todo of toDoList$ | async" [todo]="todo"></app-todo>
