@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-todo-c3e25": {
+      "hosting": {
+        "ng-todo": [
+          "ng-todo-c3e25"
+        ]
+      }
+    }
+  }
+}

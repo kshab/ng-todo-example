@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodosModule } from './todos/todos.module';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import { TodosModule } from './todos/todos.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    TodosModule
+    TodosModule,
+    AngularFireModule.initializeApp(environment),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
