@@ -1,1 +1,26 @@
-<p>todo-edit works!</p>
+<div class="edit-todo px-1">
+  <h2>
+    Is edit: {{ isEditMode }}
+  </h2>
+
+  <form class="edit-todo__form" [formGroup]="todoForm" (submit)="onSubmit()">
+    <div class="edit-todo__form-control">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name">
+    </div>
+
+    <div class="edit-todo__form-control">
+      <label for="description">Description</label>
+      <textarea name="description" id="description" rows="3" formControlName="description"></textarea>
+    </div>
+
+    <div class="edit-todo__form-control">
+      <label for="importance">it is important</label>
+      <input type="checkbox" id="importance" formControlName="isImportant">
+    </div>
+
+    <div class="edit-todo__submit-button">
+      <button type="submit" class="button" [disabled]="todoForm?.invalid">Add Todo</button>
+    </div>
+  </form>
+</div>
