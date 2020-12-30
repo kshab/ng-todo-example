@@ -1,5 +1,7 @@
-Form
+<div class="todos">
+  <app-todo-edit></app-todo-edit>
 
-<hr>
+  <hr>
 
-<app-todo *ngFor="let todo of toDoList$ | async" [todo]="todo"></app-todo>
+  <app-todo *ngFor="let todo of toDoList$ | async" [todo]="todo"></app-todo>
+</div>
