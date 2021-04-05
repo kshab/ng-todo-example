@@ -1,10 +1,10 @@
-# NgTodo
+# ng-todo-example
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
 ## About
 
-It is a simple ToDo application
+It is a simple Todo application
 
 
 ## Libraries and tools
